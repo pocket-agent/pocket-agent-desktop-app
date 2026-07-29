@@ -1,0 +1,31 @@
+{
+  "name": "pocket-agent-desktop",
+  "version": "0.1.0",
+  "private": true,
+  "description": "Pocket Agent desktop shell — Tauri wrapping pocket-agent-web-app",
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/pocket-agent/pocket-agent-desktop-app.git"
+  },
+  "homepage": "https://github.com/pocket-agent/pocket-agent-desktop-app#readme",
+  "bugs": {
+    "url": "https://github.com/pocket-agent/pocket-agent-desktop-app/issues"
+  },
+  "author": {
+    "name": "xarlizard",
+    "email": "38315638+xarlizard@users.noreply.github.com",
+    "url": "https://github.com/xarlizard"
+  },
+  "license": "MIT",
+  "engines": {
+    "node": ">=24.0.0"
+  },
+  "scripts": {
+    "tauri": "tauri",
+    "dev": "tauri dev",
+    "build": "tauri build"
+  },
+  "devDependencies": {
+    "@tauri-apps/cli": "^2.4.0"
+  }
+}
