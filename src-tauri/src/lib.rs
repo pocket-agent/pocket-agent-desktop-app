@@ -56,6 +56,16 @@ fn navigate_main_to_pocket_node(app: &tauri::AppHandle) {
     }
 }
 
+fn stop_pocket_node_child(app: &tauri::AppHandle) {
+    if let Some(state) = app.try_state::<PocketNodeChild>() {
+        if let Ok(mut guard) = state.0.lock() {
+            if let Some(mut child) = guard.take() {
+                let _ = child.kill();
+            }
+        }
+    }
+}
+
 #[cfg_attr(mobile, tauri::mobile_entry_point)]
 pub fn run() {
     tauri::Builder::default()
@@ -75,17 +85,11 @@ pub fn run() {
 
             Ok(())
         })
-        .on_event(|app, event| {
+        .build(tauri::generate_context!())
+        .expect("error while building Pocket Agent desktop")
+        .run(|app_handle, event| {
             if matches!(event, tauri::RunEvent::Exit) {
-                if let Some(state) = app.try_state::<PocketNodeChild>() {
-                    if let Ok(mut guard) = state.0.lock() {
-                        if let Some(mut child) = guard.take() {
-                            let _ = child.kill();
-                        }
-                    }
-                }
+                stop_pocket_node_child(app_handle);
             }
-        })
-        .run(tauri::generate_context!())
-        .expect("error while running Pocket Agent desktop");
+        });
 }

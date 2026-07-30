@@ -1,45 +1,91 @@
-# pocket-agent-desktop-app
+<img src=".github/pocket-agent-image.png" width="200" alt="Pocket Agent" align="left"/>
 
-Tauri 2 native shell for [pocket-agent-web-app](../pocket-agent-web-app/).
+<div>
+<h3>Pocket Agent (Desktop)</h3>
+<p>
+Native <strong>macOS</strong> app (Tauri 2) for Pocket Agent — bundled Pocket Node, API worker, and React chat UI in one window. Release builds auto-start the local stack and open the dashboard.
+</p>
+<a href="https://github.com/pocket-agent/pocket-agent-desktop-app/releases"><img src="https://img.shields.io/badge/Download%20for%20macOS-007ec6?style=flat-square&logo=apple" width="175" alt="Download for macOS"/></a>
+</div>
 
-Part of the open-source **[Pocket Agent](https://github.com/pocket-agent)** ecosystem · **v0.1.0**
+<br/><br/>
 
-## What's included (0.1.0)
+<div align="center">
 
-- **Tauri 2** window loading the web UI (`localhost:5173` in dev)
-- **Dev integration** — runs `bun run dev` in `pocket-agent-web-app` automatically
-- **Same auth flow** as browser — Google OAuth via embedded webview
+[![Downloads](https://img.shields.io/badge/downloads-GitHub%20Releases-007ec6)](https://github.com/pocket-agent/pocket-agent-desktop-app/releases)
+[![Release](https://img.shields.io/github/v/release/pocket-agent/pocket-agent-desktop-app)](https://github.com/pocket-agent/pocket-agent-desktop-app/releases)
+[![License](https://img.shields.io/badge/License-MIT-blue)](https://github.com/pocket-agent/pocket-agent-desktop-app/blob/main/LICENSE)
+[![macOS](https://img.shields.io/badge/macOS-Apple%20Silicon-blue)](https://github.com/pocket-agent/pocket-agent-desktop-app)
 
-## Prerequisites
+<br/>
+<br/>
 
-- [Rust](https://rustup.rs) (`cargo`)
-- Bun, Pocket Node, and API worker (see workspace setup)
+<img src=".github/screenshot.png" width="824" alt="Pocket Agent desktop" style="border-radius: 5px;"/><br/>
 
-## Production DMG (all-in-one)
+</div>
 
-From the **workspace root** (not this folder alone):
+<hr>
 
-```bash
-../scripts/build-all-in-one-dmg.sh
-```
+## Features
 
-Ships Pocket Agent with bundled Pocket Node and auto-start on launch. See [docs/ALL_IN_ONE_DMG.md](../docs/ALL_IN_ONE_DMG.md).
+- **All-in-one DMG** — Pocket Node venv, web UI build, and Tauri shell (see workspace `scripts/build-all-in-one-dmg.sh`)
+- **Auto-start** — spawns local API on `:8787` and navigates to the embedded UI on launch
+- **Dev mode** — loads [pocket-agent-web-app](https://github.com/pocket-agent/pocket-agent-web-app) from `localhost:5173` with live reload
+- **Same UX as browser** — Google OAuth or local `AUTH_MODE=none` via API worker
+- **Icons** — generated from `pocket-agent/.github/pocket-agent-image.png`
+
+## Requirements
+
+- **macOS** (Apple Silicon builds in CI; Intel via local build)
+- [Rust](https://rustup.rs) and Node/Bun for development
+- Full stack siblings: [pocket-agent](https://github.com/pocket-agent/pocket-agent), [pocket-agent-api-app](https://github.com/pocket-agent/pocket-agent-api-app), [pocket-agent-web-app](https://github.com/pocket-agent/pocket-agent-web-app)
+
+## Install
+
+1. Download the DMG from **[GitHub Releases](https://github.com/pocket-agent/pocket-agent-desktop-app/releases)** or [pocket-agent.pages.dev](https://pocket-agent.pages.dev)
+2. Open the DMG and drag **Pocket Agent** to Applications
+3. Launch — the app starts Pocket Node and opens the chat UI
 
 ## Quick start (dev)
 
-From workspace root:
+From the **org workspace** root (all sibling repos checked out):
 
 ```bash
 ./scripts/setup-local.sh
 ./scripts/dev-desktop.sh
 ```
 
-| Terminal | Directory | Command |
-|----------|-----------|---------|
-| 1 | `pocket-agent/` | `pocket-agent serve` |
-| 2 | `pocket-agent-api-app/` | `npm run dev` |
-| 3 | `pocket-agent-desktop-app/` | `npm run dev` |
+Or three terminals: `pocket-agent serve`, `npm run dev` in api-app, `npm run dev` in this repo.
 
-## Docs
+## Development
 
-[INSTRUCTIONS.md](INSTRUCTIONS.md) · [CHANGELOG.md](CHANGELOG.md)
+```bash
+git clone https://github.com/pocket-agent/pocket-agent-desktop-app.git
+cd pocket-agent-desktop-app
+npm install
+npm run dev
+```
+
+Production DMG from workspace:
+
+```bash
+../scripts/build-all-in-one-dmg.sh
+```
+
+See [docs/ALL_IN_ONE_DMG.md](../docs/ALL_IN_ONE_DMG.md) (workspace) and [INSTRUCTIONS.md](INSTRUCTIONS.md).
+
+## Documentation
+
+| Doc | Description |
+|-----|-------------|
+| [INSTRUCTIONS.md](INSTRUCTIONS.md) | Desktop app scope |
+| [CHANGELOG.md](CHANGELOG.md) | Release history |
+| [CONTRIBUTING.md](CONTRIBUTING.md) | How to contribute |
+
+## Contributing
+
+Contributions are welcome. Please read [CONTRIBUTING.md](CONTRIBUTING.md) before opening a pull request.
+
+## License
+
+Pocket Agent Desktop is released under the [MIT License](LICENSE).
