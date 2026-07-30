@@ -15,7 +15,17 @@ Part of the open-source **[Pocket Agent](https://github.com/pocket-agent)** ecos
 - [Rust](https://rustup.rs) (`cargo`)
 - Bun, Pocket Node, and API worker (see workspace setup)
 
-## Quick start
+## Production DMG (all-in-one)
+
+From the **workspace root** (not this folder alone):
+
+```bash
+../scripts/build-all-in-one-dmg.sh
+```
+
+Ships Pocket Agent with bundled Pocket Node and auto-start on launch. See [docs/ALL_IN_ONE_DMG.md](../docs/ALL_IN_ONE_DMG.md).
+
+## Quick start (dev)
 
 From workspace root:
 
