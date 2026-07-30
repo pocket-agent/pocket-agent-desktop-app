@@ -6,7 +6,7 @@
   "build": {
     "beforeDevCommand": "cd ../pocket-agent-web-app && bun run dev",
     "devUrl": "http://localhost:5173",
-    "beforeBuildCommand": "cd ../pocket-agent-web-app && VITE_API_BASE_URL=http://127.0.0.1:8787 VITE_AUTH_MODE=none VITE_CONNECTION_PROFILE=all-local bun run build",
+    "beforeBuildCommand": "cd ../pocket-agent-web-app && VITE_API_BASE_URL=http://127.0.0.1:8787 VITE_AUTH_MODE=none VITE_CONNECTION_PROFILE=all-local VITE_DESKTOP_BUNDLE=true bun run build",
     "frontendDist": "../../pocket-agent-web-app/dist"
   },
   "app": {
@@ -16,7 +16,8 @@
         "title": "Pocket Agent",
         "width": 1280,
         "height": 800,
-        "resizable": true
+        "resizable": true,
+        "visible": false
       }
     ],
     "security": {
@@ -26,7 +27,7 @@
   "bundle": {
     "active": true,
     "targets": "all",
-    "resources": ["resources/pocket-node"],
+    "resources": ["resources/pocket-node", "startup"],
     "icon": [
       "icons/32x32.png",
       "icons/128x128.png",
