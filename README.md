@@ -3,7 +3,7 @@
 <div>
 <h3>Pocket Agent (Desktop)</h3>
 <p>
-Native <strong>macOS</strong> app (Tauri 2) for Pocket Agent — bundled Pocket Node, API worker, and React chat UI in one window. Release builds auto-start the local stack and open the dashboard.
+Native <strong>macOS</strong> app (Tauri 2) for Pocket Agent — all-in-one DMG with bundled Pocket Node and React chat UI. Release builds auto-start Pocket Node and open the dashboard (no separate API worker install).
 </p>
 <a href="https://github.com/pocket-agent/pocket-agent-desktop-app/releases"><img src="https://img.shields.io/badge/Download%20for%20macOS-007ec6?style=flat-square&logo=apple" width="175" alt="Download for macOS"/></a>
 </div>
@@ -31,7 +31,7 @@ Native <strong>macOS</strong> app (Tauri 2) for Pocket Agent — bundled Pocket 
 - **All-in-one DMG** — Pocket Node venv, web UI build, and Tauri shell (see workspace `scripts/build-all-in-one-dmg.sh`)
 - **Auto-start** — spawns local API on `:8787` and navigates to the embedded UI on launch
 - **Dev mode** — loads [pocket-agent-web-app](https://github.com/pocket-agent/pocket-agent-web-app) from `localhost:5173` with live reload
-- **Same UX as browser** — Google OAuth or local `AUTH_MODE=none` via API worker
+- **Same UX as browser** — local `AUTH_MODE=none` in the bundled app; dev can use Google OAuth via API worker on `:8788`
 - **Icons** — generated from `pocket-agent/.github/pocket-agent-image.png`
 
 ## Requirements
